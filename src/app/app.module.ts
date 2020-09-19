@@ -6,7 +6,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 const routes = [
-  { path: '', loadChildren: () => import('./foo/foo.module').then(m => m.FooModule) }
+  { path: '', loadChildren: () => import('./foo/foo.module').then(m => m.FooModule) },
+  { path: 'bar', loadChildren: () => import('./bar/bar.module').then(m => m.BarModule) }
 ];
 
 @NgModule({

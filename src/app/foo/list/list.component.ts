@@ -1,10 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListService } from '../../services/list.service';
 
 @Component({
   selector: 'app-list',
-  template: `
+  template: `<p></p>
+  <button (click)="onPrev()" [disabled]="currentPage <= 1">Prev</button>&nbsp;
+  <input type="number" name="inputTextInt" pinputtext="" placeholder="Trang" [(ngModel)]="currentPage"
+    style="width: 50px">
+  <button (click)="onGo()" type="button" [disabled]="currentPage > 2 || currentPage < 1">Go</button>&nbsp;
+  <button (click)="onNext()" [disabled]="currentPage > 1">Next</button>
       <ng-container *ngIf="items$ | async as items">
         <ul>
           <li *ngFor="let item of items">
@@ -12,13 +17,11 @@ import { ListService } from '../../services/list.service';
           </li>
         </ul>    
       </ng-container>
-      <button (click)="onPrev()" [disabled]="currentPage <= 1">Prev</button>
-    <button (click)="onNext()" [disabled]="currentPage > 1">Next</button>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
 
   items$: Observable<any>;
   currentPage = 1;
@@ -38,5 +41,12 @@ export class ListComponent implements OnInit {
   onPrev() {
     this.currentPage -= 1;
     this.items$ = this.listService.getList(this.currentPage);
+  }
+
+  onGo() {
+    this.items$ = this.listService.getList(this.currentPage);
+  }
+
+  ngOnDestroy(): void {
   }
 }

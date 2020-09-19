@@ -104,6 +104,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "demo-angular-memory"
+    }
+  },
+  "defaultProject": "demo-angular-memory",
+  "cli": {
+    "analytics": false
+  }
 }

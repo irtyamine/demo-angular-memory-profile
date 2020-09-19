@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list-item',
@@ -11,12 +11,15 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListItemComponent implements OnInit {
+export class ListItemComponent implements OnInit, OnDestroy {
   @Input() item: any;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy():void{
   }
 
 }

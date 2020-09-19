@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-foo',
@@ -8,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class FooComponent implements OnInit {
+export class FooComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void{
   }
 
 }
