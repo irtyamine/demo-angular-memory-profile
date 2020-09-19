@@ -20,6 +20,7 @@ export class ListItemComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy():void{
+    console.log('list item destroyed', this.item.email);
   }
 
 }
